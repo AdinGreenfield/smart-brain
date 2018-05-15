@@ -1,0 +1,5 @@
+button:hover {
+	background: gray;
+	color: white;
+	border-radius: 25px;
+}
