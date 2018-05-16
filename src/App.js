@@ -49,7 +49,6 @@ class App extends Component {
 
   onInputChange = (event) => {
     this.setState({input: event.target.value})
-    console.log(this.state)
   }
 
   loadUser = (data) => {
@@ -70,22 +69,6 @@ class App extends Component {
     const width = Number(image.width);
     const height = Number(image.height);
 
-    /* This code is commented out because it is for 
-    another feature not yet available in this application.*/
-    // const clarifaiFace = data.outputs[0].data.regions.filter((info, i) => {
-    //   console.log('info is ',info);
-    //   if(info.data.face.identity.concepts[0].value > .9){
-    //     return {
-    //       leftCol: info.region_info.bounding_box.left_col * width,
-    //       topRow: info.region_info.bounding_box.top_row * height,
-    //       rightCol: width - (info.region_info.bounding_box.right_col * width),
-    //       bottomRow: height - (info.region_info.bounding_box.bottom_row * height)
-    //     }
-    //   }
-    //      })
-
-    //      return clarifaiFace; //[0].region_info.bounding_box;
-
     return {
       leftCol: clarifaiFace.left_col * width,
       topRow: clarifaiFace.top_row * height,
@@ -96,7 +79,6 @@ class App extends Component {
 
   displayFaceBox = (box) => {
     this.setState({box});
-    console.log('box in app ', box);
   }
 
 
@@ -110,7 +92,7 @@ class App extends Component {
 
   onSubmit = () => {
     this.setState({imageURL: this.state.input})
-    fetch('http://localhost:3000/imageurl', {
+    fetch('https://radiant-reaches-15611.herokuapp.com/imageurl', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -120,7 +102,7 @@ class App extends Component {
     .then(response => response.json()) 
     .then(response => {
       if (response){
-        fetch('http://localhost:3000/image', {
+        fetch('https://radiant-reaches-15611.herokuapp.com/image', {
           method: 'put',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
