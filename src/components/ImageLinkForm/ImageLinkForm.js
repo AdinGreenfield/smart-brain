@@ -5,7 +5,7 @@
  	return (
  			<div>
  				<p className='f4 pa2'>
- 					{'This Magic Brain will detect faces in your pictures. Give it a try.'}
+ 					{'This Magic Brain will predict the celebrity and their face in your pictures. Give it a try.'}
  				</p>
  				<div>
  					<div className='form shadow-5 br3 pa3 center'>
